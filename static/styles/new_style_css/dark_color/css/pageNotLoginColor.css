@@ -1,0 +1,51 @@
+body {
+   background-color: white;
+   
+}
+
+
+#MainPage {
+          
+            background-color: white;
+
+        }
+     
+
+  
+
+        #error {
+            color: red;
+     
+        }
+
+ 
+div.login-menu-login {
+      background-color: #a2bd29;
+                color: aliceblue;
+                
+             
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #a2bd29;
+                text-transform: uppercase;
+}
+div.login-menu-register {
+      background-color: #0a8128;
+                color: aliceblue;
+                
+             
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #a2bd29;
+                text-transform: uppercase;
+}
+div.login-menu-doctor {
+      background-color: #383bd8;
+                color: aliceblue;
+                
+             
+                text-decoration: none;
+                transition-duration: 0.4s;
+                border: 1px solid #a2bd29;
+                text-transform: uppercase;
+}

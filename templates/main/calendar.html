@@ -1,0 +1,104 @@
+{{STATICFILES_DIRSR}}
+<div id="calendar">
+
+	<table  align=center class='main-calendar'>
+	  <tr>
+	    <td colspan=7><div align=center><span class="main-calendar-month">{{text_month}} {{year}}</span></div></td>
+	  </tr>
+	  <tr>
+	    <td><div align=center><span class="main-calendar-span">Pon</span></div></td>
+	    <td><div align=center><span class="main-calendar-span">Wto</span></div></td>
+	    <td><div align=center><span class="main-calendar-span">śro</span></div></td>
+	    <td><div align=center><span class="main-calendar-span">Czwa</span></div></td>
+	    <td><div align=center><span class="main-calendar-span">Pią</span></div></td>
+	    <td><div align=center><span class="main-calendar-span">Sob</span></div></td>
+	    <td><div align=center><span class="main-calendar-span">Nie</span></div></td>
+	  </tr>
+	  <tbody>
+
+<a href="{% url 'account_logout' %}">Wyloguj</a>
+{% load my_filters %}
+{% make_counter 1 as c %}
+
+  {% for  day2 in 6|get_range %}
+
+    <tr class='main-calendar-tr '>
+    
+    {% for cols in  7|get_range %}
+    <td class='main-calendar-td'>
+{% get_counter c as total %}
+      {% if total <= how_day_month  %}
+
+	
+	
+        {% if   forloop.counter > day_week    or forloop.parentloop.counter > 1 %}
+            
+            {%if  total == day3    %}
+                <div  align=center id='day_{{day2}}' class="main-calendar-cell-active"><span class="active">{{total}} </span></div>
+
+
+            {% else %}
+     
+                <div onmouseover='calendarOn("day_{{day2}}")' onmouseout='calendarOff("day_{{day2}}")' align=center id='day_{{day2}}' 
+                class="cell cell main-calendar-cell-border  "
+                 onclick="LoadPage('{% url 'main' year  month total %}')">
+                  <a  class="main-calendar-span-active " href="{% url 'main'  year  month total %}">
+                    {{total}}
+                   
+                    
+                  </a>
+                </div>
+                
+            {% endif %}
+            
+                {%  next c as ta %}
+            
+            
+                
+            
+          
+            
+            
+       
+        
+        
+       
+        {% endif %}
+    
+
+	
+      {% endif %}
+        </td>
+   {% endfor %}
+    </tr>
+
+  {% endfor %}
+  <tr>
+
+</table>
+</div>
+<br>
+<div class=" center main-menu-month">
+  
+  <div class="main-menu-month-one">
+      <button class="btn btn-primary main-button-month mainHref" onclick=location.href="{% url 'main' back.0 back.1  1 %}">Miesiąc Wstecz</button>
+  </div>
+  <div class="main-menu-month-one">
+          <button class="btn btn-success main-button-month mainHref" onclick=location.href="{% url 'main' back_year.0  back_year.1 1 %}">Rok Wstecz</button>
+  </div>
+  <div class="main-menu-month-one">
+      <button class="btn btn-success main-button-month mainHref" onclick=location.href="{% url 'main' next_year.0  next_year.1 1  %}">Rok Dalej</button>
+      
+  </div>
+  <div class="main-menu-month-one">
+      <button class="btn btn-primary  main-button-month  mainHref" onclick=location.href="{% url 'main' next.0 next.1 1 %}">miesiąc Dalej</button>
+      
+      
+  </div>
+
+
+  
+</div>
+
+
+    

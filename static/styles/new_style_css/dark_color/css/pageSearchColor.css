@@ -1,0 +1,165 @@
+
+    div.plusButton {
+    background-color: #60CEF0;
+}
+div.minusButton {
+    background-color: #F76868;
+}
+div.settings-title {
+    background-color: rgb(161, 190, 190);
+    color:#203611;
+    border-radius: 27px;
+    -webkit-border-radius: 27px;
+    -moz-border-radius: 27px;
+    -ms-border-radius: 27px;
+    -o-border-radius: 27px;
+}
+div.search-mood-day {
+    background-color: #a2bb16;
+    border-radius: 23px;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    -ms-border-radius: 23px;
+    -o-border-radius: 23px;
+
+    color: rgb(82, 44, 14);
+}
+div.main-mood-show-single {
+   
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+div.main-mood-show-single-br {
+    height: 50px;
+}
+div.main-sleep-show-single {
+    
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+div.main-mood-show-description {
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    border-radius: 20px 20px 20px 20px;
+    background-color: #ffffa5;
+    border: 1px solid #000000;
+    font-family: "Architects Daughter", serif;
+    color:rgb(50, 61, 1);
+    font-size: 22px;
+}
+div.main-sleep-show-description {
+    -webkit-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    box-shadow: 0px 0px 16px -1px rgba(66, 68, 90, 1);
+    border-radius: 20px 20px 20px 20px;
+    background-color: #92f8ff;
+    border: 1px solid #000000;
+    font-family: "Architects Daughter", serif;
+    color:rgb(50, 61, 1);
+    font-size: 22px;
+}
+div.main-search-show-single-week {
+    border: 1px solid #000000;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+}
+a.search-mood-average-date {
+    color: #C0A566;
+}
+a.search-mood-average-date-menu-2 {
+    color: #C0A566;
+}
+div.search-mood-average-date-hidden  {
+    
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    background-color: rgba(230, 235, 212, 0.9);
+}
+div.main-mood-show-single-left { 
+    background-color: rgb(234 255 220);
+    color: rgb(20, 20, 18);
+}
+div.main-drugs-show-single-left {
+    background-color: rgb(234 255 220);
+    color: rgb(20, 20, 18);
+}
+table.search-mood-table {
+    color: white;
+}
+
+.disable {
+    background-color: white !important;
+}
+div.search-result {
+    color: white;
+}
+td.main-center {
+    color: white;
+}
+div.main-action-position {
+    color: black;
+}
+td.main-action-positionActionTitle1 {
+    color: white;
+}
+td.main-action-positionActionTitle2 {
+    color: white;
+}
+td.titleDrugs {
+    color: white;
+}
+div.search-mmod-average-title-date {
+    color: white;
+}
+tr.even {
+    background-color: rgb(255, 255, 255);
+}
+tr.odd {
+    background-color: rgb(210, 218, 105);
+}
+th.search-mood-average-center {
+    color: white;
+}
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: rgb(255, 255, 255);
+}
+.table-striped > tbody > tr:nth-child(2n+2) > td, .table-striped > tbody > tr:nth-child(2n+2) > th {
+   background-color: rgb(210, 218, 105);
+}
+th.search-mood-title {
+    color: white;
+}
+span.search-mood-average-span {
+    color: white;
+}
+td.search-mood-title {
+    color: white;
+}
+td.font-color-action-td {
+    color: white;
+}
+  span.search-mood-week-span {
+    color: white;
+  }
+  div.main-search-show-week {
+    color: white;
+  }
+  div.search-mood-show-single-sum {
+    color: white;
+  }
+  .font-mmod-span-2 {
+    color: white;
+  }
