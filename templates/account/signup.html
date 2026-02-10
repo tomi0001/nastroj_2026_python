@@ -1,45 +1,61 @@
-{% extends "./base.html" %}
-{% load allauth i18n %}
-{% block head_title %}
-    {% trans "Signup" %}
-{% endblock head_title %}
+{% extends "./user.html" %}
+
 {% block content %}
-    {% element h1 %}
-        {% trans "Sign Up" %}
-    {% endelement %}
-    {% setvar link %}
-        <a href="{{ login_url }}">
-        {% endsetvar %}
-        {% setvar end_link %}
-        </a>
-    {% endsetvar %}
-    {% element p %}
-        {% blocktranslate %}Already have an account? Then please {{ link }}sign in{{ end_link }}.{% endblocktranslate %}
-    {% endelement %}
-    {% if not SOCIALACCOUNT_ONLY %}
-        {% url 'account_signup' as action_url %}
-        {% element form form=form method="post" action=action_url tags="entrance,signup" %}
-            {% slot body %}
-                {% csrf_token %}
-                {% element fields form=form unlabeled=True %}
-                {% endelement %}
-                {{ redirect_field }}
-            {% endslot %}
-            {% slot actions %}
-                {% element button tags="prominent,signup" type="submit" %}
-                    {% trans "Sign Up" %}
-                {% endelement %}
-            {% endslot %}
-        {% endelement %}
-    {% endif %}
-    {% if PASSKEY_SIGNUP_ENABLED %}
-        {% element hr %}
-        {% endelement %}
-        {% element button href=signup_by_passkey_url tags="prominent,signup,outline,primary" %}
-            {% trans "Sign up using a passkey" %}
-        {% endelement %}
-    {% endif %}
-    {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
-{% endblock content %}
+<br><Br>
+    <div id="PageRegister">
+    
+    <div >
+          <form class="mt-8 space-y-6" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+  {{ form.non_field_errors | safe }}
+  <input type="hidden" name="remember" value="true" />
+  <table class="table login-table">
+      <tr>
+        <td>
+      {{ form.email.errors | safe }}
+      <label for="email" class="sr-only">e-mail</label>
+      </td>
+      <td>
+      <input type="text" class="form-control form-control-lg" name="email" placeholder="e-mail">
+      </td>
+      </tr>
+      <tr>
+        <td>
+      {{ form.password1.errors | safe }}
+      <label for="id_password1" class="sr-only">hasło </label>
+      </td>
+      <td>
+      <input type="password" class="form-control form-control-lg" name="password1"  placeholder="wpisz hasło">
+      </td>
+      </tr>
+      <tr>
+        <td>
+      {{ form.password2.errors | safe }}
+      <label for="password2" class="sr-only">wpisz jeszcze raz swoje hasło</label>
+      </td>
+      <td>
+      <input type="password" class="form-control form-control-lg" name="password2"  placeholder="wpisz jeszcze raz swoje hasło">
+      </td>
+      </tr>
+      <tr>
+        <td>
+      <label for="strat_day" class="sr-only">Początek dnia</label>
+      </td>
+      <td>
+      <input type="number" min="0" max="23" placeholder="Początek dnia" value="0" name="start_day" class="form-control form-control-lg" >
+      </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="login-td-center" >
+              <button type="submit"
+                    class="btn btn-success btn-lg">
+                
+                ZAREJESTRUJ SIĘ
+            </button>
+            </td>
+          </tr>
+            </table>
+  </form>
+
+
+{% endblock %}

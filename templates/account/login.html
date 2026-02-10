@@ -1,0 +1,54 @@
+{% extends "./user.html" %}
+
+{% block content %}
+<br><Br>
+    <div id="PageLogin">
+    
+    <div >
+          <form class="mt-8 space-y-6" id="signup_form" method="post" action="{% url 'account_login' %}">
+        {% csrf_token %}
+  {{ form.non_field_errors | safe }}
+
+  <table class="table login-table">
+      <tr>
+        <td>
+      {{ form.email.errors | safe }}
+      <label for="email" class="sr-only">e-mail</label>
+      </td>
+      <td>
+          <input type="email" name="login" class="form-control form-control-lg"  autocomplete="email" placeholder="Email address" maxlength="320" required id="id_login">
+      </td>
+      </tr>
+      <tr>
+        <td>
+      {{ form.password.errors | safe }}
+      <label for="id_password1" class="sr-only">hasło </label>
+      </td>
+      <td>
+          <input type="password" class="form-control form-control-lg" name="password" placeholder="Password" autocomplete="current-password" required aria-describedby="id_password_helptext" id="id_password">
+      </td>
+      </tr>
+            </tr>
+      <tr>
+        <td>
+  <label for="id_remember">Zapamiętaj mnie:</label>
+  </td>
+  <td>
+    <input type="checkbox" name="remember" id="id_remember" class="form-control-lg form-check-input" >
+    </td>
+        <tr>
+          <td colspan="2" class="login-td-center" >
+              <button type="submit"
+                    class="btn btn-success btn-lg">
+                
+                ZAREJESTRUJ SIĘ
+            </button>
+            </td>
+          </tr>
+            </table>
+  </form>
+
+
+{% endblock %}
+
+
