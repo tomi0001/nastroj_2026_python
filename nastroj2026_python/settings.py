@@ -39,6 +39,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'users',
+     'main',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -242,7 +243,7 @@ WSGI_APPLICATION = 'nastroj2026_python.wsgi.application'
 DATABASES = {
       'default': {
         'ENGINE': 'django.db.backends.postgresql', # Używamy silnika MySQL
-        'NAME': 'nastroj9',          # Nazwa bazy danych (z kroku 1)
+        'NAME': 'nastroj14',          # Nazwa bazy danych (z kroku 1)
         'USER': 'postgres',              # Nazwa użytkownika (z kroku 1)
         'PASSWORD': 'a1234',      # Hasło użytkownika (z kroku 1)
         'HOST': 'localhost',           # Host bazy danych (zwykle localhost)

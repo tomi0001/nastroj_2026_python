@@ -14,6 +14,7 @@ html, body {
 
 #MainPage {
     overflow-x: hidden;
+    padding-top: 50px;
 }
 
 #menu {

@@ -16,7 +16,7 @@
 	  </tr>
 	  <tbody>
 
-<a href="{% url 'account_logout' %}">Wyloguj</a>
+
 {% load my_filters %}
 {% make_counter 1 as c %}
 
@@ -34,12 +34,12 @@
         {% if   forloop.counter > day_week    or forloop.parentloop.counter > 1 %}
             
             {%if  total == day3    %}
-                <div  align=center id='day_{{day2}}' class="main-calendar-cell-active"><span class="active">{{total}} </span></div>
+                <div  align=center id='day_{{total}}' class="main-calendar-cell-active"><span class="active">{{total}} </span></div>
 
 
             {% else %}
      
-                <div onmouseover='calendarOn("day_{{day2}}")' onmouseout='calendarOff("day_{{day2}}")' align=center id='day_{{day2}}' 
+                <div onmouseover='calendarOn("day_{{total}}")' onmouseout='calendarOff("day_{{total}}")' align=center id='day_{{total}}' 
                 class="cell cell main-calendar-cell-border  "
                  onclick="LoadPage('{% url 'main' year  month total %}')">
                   <a  class="main-calendar-span-active " href="{% url 'main'  year  month total %}">

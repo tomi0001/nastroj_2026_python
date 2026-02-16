@@ -15,13 +15,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from .views import  search
 from django.urls import path, include # Importujemy include
 from django.views.generic import TemplateView  # new
 
 
 urlpatterns = [
 
-    
+    path("/searchMood", search,name='searchMood'),  # new
 
 ]

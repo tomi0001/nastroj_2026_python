@@ -1,0 +1,177 @@
+
+    <div class="main-menu">
+            <div class="main-menu-position" onclick="LoadPage('{% url 'main' %}')">
+                <a class="  main-menu-menu font-menu" >
+                    GŁÓWNA STRONA
+                </a>
+            </div>
+            <div class="main-menu-position ">
+                <a class="dropdown-toggle main-menu-menu font-menu" onclick="showMenuSearch()">
+                WYSZUKAJ
+                </a>
+            </div>
+            <div class="main-menu-position">
+                <a class="dropdown-toggle main-menu-menu font-menu" onclick="showMenuSettings()">
+                USTAWIENIA KONTA
+                </a>
+            </div>
+            <div class="main-menu-position"  onclick="LoadPage('{% url 'account_logout' %}')">
+                <a class=" main-menu-menu  font-menu" >
+                WYLOGUJ
+                </a>
+            </div>
+    </div>
+
+    <div class="main-menu-search">
+        <div class="main-menu-search-title">
+            <div class="main-menu-search-position-static">
+                <span class="  main-menu-search-title font-menu-span" >
+                    wyszukaj nastroje
+                </span>
+            </div>
+            <div class="main-menu-search-position">
+                <a class="main-menu-search-position font-menu" onclick="LoadPage('{% url 'searchMood' %}')">
+                    Wyszukaj nastrój
+                </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                Wyszukaj sen
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                Oblicz średnią trwania nastroju
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                Wyszukaj akcję całodniową
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                Oblicz róznice miedzy końcem snu a porannymi lekami
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                Oblicz ile H trwały nastroje
+            </a>
+            </div>
+           
+        </div>
+        <div class="main-menu-search-title">
+            <div class="main-menu-search-br"></div>
+            <div class="main-menu-search-position-static">
+            <span class="  main-menu-search-title font-menu-span"  >
+                wyszukaj produkty
+            </span>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                Wyszukaj produkt
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                WYSZUKAJ NASTRÓJ WG PRODUKT
+            </a>
+            </div>
+            
+        </div>
+        
+    </div>
+
+
+    <div class="main-menu-settings">
+        <div class="main-menu-search-title">
+            <div class="main-menu-search-position-static">
+                <span class="  main-menu-search-title font-menu-span" >
+                    ustawienia nastroju
+                </span>
+            </div>
+            <div class="main-menu-search-position">
+                <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                DODAJ NOWĄ AKCJE 
+                </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                POZIOMY NASTROJU
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu"  onclick="LoadPage()">
+                ZMIEŃ NAZWY AKCJI
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                ZMIEŃ DATY AKCJI
+            </a>
+            </div>
+            <div class="main-menu-search-position-static" >
+            <span class="  main-menu-search-title font-menu-span" >
+            USTAWIENIA UŻYTKOWNIKA
+            </span>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+            LOGOWANIE DOCTORA
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu"  onclick="LoadPage()">
+            USTAWIENIA UŻYTKOWNIKA
+            </a>
+            </div>
+        </div>
+        <div class="main-menu-search-br"></div>
+        <div class="main-menu-search-title">
+        
+            <div class="main-menu-search-position-static">
+            <span class="  main-menu-search-title font-menu-span" >
+            USTAWIENIA PRODUKTÓW
+            </span>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+            DODAJ NOWĄ GRUPĘ
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+            DODAJ NOWĄ SUBSTANCJĘ
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+            DODAJ NOWĄ PRODUKT  
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+                EDYTUJ GRUPĘ
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+            EDYTUJ SUBSTANCJĘ
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+            EDYTUJ PRODUKT
+            </a>
+            </div>
+            <div class="main-menu-search-position">
+            <a class="main-menu-search-position font-menu" onclick="LoadPage()">
+            ZAPLANUJ DAWKĘ
+            </a>
+            </div>
+
+        </div>
+        
+        
+    </div>

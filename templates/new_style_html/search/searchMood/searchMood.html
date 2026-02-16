@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        {% load static %}
+
+{%  include "../../layout/head.html" %}
+      <link href="{%  static 'styles/'|add:user.css|add:'/css/pageSearchwidth1810.css'    %}" rel="stylesheet">
+        <link href="{%  static 'styles/'|add:user.css|add:'/css/pageSearchwidth1410.css' %}" rel="stylesheet">
+        <link href="{%  static 'styles/'|add:user.css|add:'/css/pageSearchwidth1210.css' %}" rel="stylesheet">
+        <link href="{%  static 'styles/'|add:user.css|add:'/css/pageSearchwidth700.css' %}" rel="stylesheet">
+        <link href="{%  static 'styles/'|add:user.css|add:'/css/pageSearchwidth360.css' %}" rel="stylesheet">
+        <link href="{%  static 'styles/'|add:user.css|add:'/css/pageSearchAll.css' %}" rel="stylesheet">
+        <link href="{%  static 'styles/'|add:user.css|add:'/'|add:user.css_color|add:'/css/pageMainColor.css' %}" rel="stylesheet">
+        <script src="{% static 'styles/'|add:user.css|add:'/js/pageLogin.js'%}"></script>
+        <script src="{% static 'styles/'|add:user.css|add:'/js/pageSearch.js'%}"></script>
+    </head>
+    <body>        
+{% include "../../layout/menu.html" %}
+
+
+            <div id="MainPage">
+            
+                
+
+                    {% block content %}
+                      
+
+                    {% endblock %}
+                    
+                
+                
+            </div>
+
+    </body>
+</html>

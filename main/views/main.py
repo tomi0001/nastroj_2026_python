@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from ..services.calendar import *
 from ..services.main import *
 from django.template.defaulttags import register
+from django.contrib.auth.models import User
 
 @register.filter
 def get_range(value):
@@ -12,7 +13,9 @@ def get_range(value):
 @login_required
 def main(request,year="",month="",day=""):
     Calendar = calendar(request,year,month,day)
-    return render(request,    'main/main.html',{ 'text_month': Calendar.text_month ,
+    user = request.user 
+    style = user.css;
+    return render(request,    style.replace("css","html") +  '/main/main.html',{ 'text_month': Calendar.text_month ,
                                                 "year" :Calendar.year,
                                 "day2": 1,
                                 "day1": 1,
