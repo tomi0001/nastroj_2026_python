@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from .views import  main
+from .views import  *
 from django.urls import path, include # Importujemy include
 from django.views.generic import TemplateView  # new
 
@@ -24,5 +24,6 @@ urlpatterns = [
     path("", main,name='main'),  # new
     path("<int:year>/<int:month>/<int:day>/", main,name='main'),  # new
     path("<int:year>/<int:month>/", main,name='main'),  # new
+    path("/addMoodSubmit", addMoodSubmit,name='addMoodSubmit'),  # new
 
 ]

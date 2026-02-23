@@ -27,7 +27,41 @@
 
                     {% endblock %}
                     
-                
+                    <div style="clear: both;"></div>
+
+
+                <div class="main-menu-add">
+
+
+                    <div class="main-menu-add-single main-menu-add-mood main-menu-add-selected" id='moodSelected' onclick="SwitchMenuMoodAdd('mood')">
+                        DODAJ NASTRÓJ
+                    </div>
+                    <div class="main-menu-add-single main-menu-add-sleep" id='sleepSelected'  onclick="SwitchMenuMoodAdd('sleep')">
+                        DODAJ SEN
+                    </div>
+                    <div class="main-menu-add-single main-menu-add-drugs" id='drugsSelected' onclick="SwitchMenuMoodAdd('drugs')">
+                        DODAJ LEK
+                    </div>
+                <div class="main-menu-add-single-2 main-menu-add-action" id='actionSelected' onclick="SwitchMenuMoodAdd('action')">
+                        DODAJ AKCJE CAŁODNIOWĄ
+                    </div>
+                    <div class="main-menu-add-single main-menu-add-action" id='actionPlanedSelected' onclick="SwitchMenuMoodAdd('actionPlaned')" ">
+                    ZAPLANUJ AKCJĘ
+                    </div>
+
+                </div>
+                 <br>
+                    {% include "./addMood.html" %}
+                    {% include "./addSleep.html" %}
+                    {% include "./addDrugs.html" %}
+                    {% include "./addAction.html" %}
+                    {% include "./addActionPlaned.html" %}
+                    
+                    <br><br><br><br>
+
+                    <script>
+                        window.onload=loadSesson();
+                    </script>
                 
             </div>
 

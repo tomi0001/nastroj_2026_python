@@ -280,11 +280,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Warsaw'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -326,3 +326,5 @@ SILENCED_SYSTEM_CHECKS = ["models.W036"]
 ACCOUNT_FORMS = {
     "signup": "users.forms.CustomSignupForm",
 }
+LONG_MOOD = 72000
+SHORT_MOOD = 500

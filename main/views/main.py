@@ -2,8 +2,11 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from ..services.calendar import *
 from ..services.main import *
+from ..services.mood import *
 from django.template.defaulttags import register
 from django.contrib.auth.models import User
+from datetime import datetime
+import time
 
 @register.filter
 def get_range(value):
@@ -29,4 +32,61 @@ def main(request,year="",month="",day=""):
                                 "next_year": Calendar.next_year,
                                 "date": str(Calendar.year) + "-" + str(Calendar.month) + "-" +  str(Calendar.day)
                                 }
-    )   
+    )
+def addMoodSubmit(request):
+                # Mood = new serviceMood;
+            Mood = mood()
+            user = request.user 
+            style = user.css;
+            print (request.GET.get('timeStart'))
+            # username = request.GET.get('timeStart')
+            if (request.GET.get('timeStart') == ""  ):
+                timeStart = Mood.selectLastMoods(request)
+           
+                # if ( not timeStart.date_end):
+                #     return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': ["uzupełnij czas zaczęcia"] })
+                # else:
+                # timeStart = timeStart[0].date_end
+                # try:
+                #      obj = timeStart.date_end
+                # except IndexError:
+                #      obj = None 
+                
+
+
+                # for timeS in timeStart:
+                timeStart =  timeStart.date_end.strftime("%Y-%m-%d %H:%M:%S") 
+                
+                
+            
+            else:
+                timeStart = request.GET.get('dateStart') + " " +  request.GET.get("timeStart") + ':00';
+            
+            if (request.GET.get("timeEnd") == ""):
+                 dateNow = datetime.now()
+                 timeEnd = dateNow.strftime("%Y-%m-%d %H:%M:%S")
+                #  timeEnd = date("Y-m-d H:i")
+            else:
+                timeEnd = request.GET.get("dateEnd") + " " +  request.GET.get("timeEnd") + ':00';
+            print (timeStart)
+            # return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': timeStart })
+            
+            # $Mood->setVariableMood($request);
+            Mood.checkError(timeStart,timeEnd,request);
+            # $Mood->checkAddMood($Mood->moodsVariable);
+            
+            # if (!empty($request->get("idActions")) ) {
+            #     $Mood->checkErrorAction($request,round(((StrToTime($timeEnd) - StrToTime($timeStart)) /60 ),2) );
+            # }
+            if (len(Mood.errors) != 0):
+                return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': Mood.errors })
+            else:
+                id = Mood.saveMood(request,timeStart,timeEnd);
+            
+             
+
+            # if (!empty($request->get("idAction"))) {
+            #         $Mood->saveAction($request,$id);
+            #              Mood.saveMood(request)
+            # } 
+            return render(request,    style.replace("css","html") +  '/main/f.html')

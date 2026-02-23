@@ -1,6 +1,14 @@
 from django.db import models
 from django.conf import settings
-# from django.contrib.auth.models import User
+from django.shortcuts import render
+
+# from django.http import HttpResponse, HttpResponseRedirect
+# from django.shortcuts import render, redirect
+# from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+# from django.contrib.auth import login, logout
+# from django.contrib import messages
+# from django.contrib.auth.decorators import login_required
+
 
 class Moods(models.Model):
     class enumMood(models.TextChoices):
@@ -18,7 +26,7 @@ class Moods(models.Model):
     level_anxiety = models.FloatField()
     level_nervousness = models.FloatField()
     level_stimulation = models.FloatField()
-    epizodes_psychotik = models.SmallIntegerField()
+    epizodes_psychotik = models.SmallIntegerField(blank=True)
     what_work = models.TextField()
     type = models.CharField(
         max_length=6,
