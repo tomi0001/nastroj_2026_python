@@ -6,11 +6,21 @@ from datetime import datetime
 import time
 from dateutil import parser
 from django.conf import settings
+from django import forms
+
 
 
 # Create your views here.
 class mood():
-
+    # liczba = forms.FloatField(min_value=0.0, max_value=100.0)
+    # form = mood(request.GET)
+    # if form.is_valid():
+    # # Dane są poprawne, zamienione na float
+    #     wartość = form.cleaned_data['liczba']
+    #     print(type(wartość))  # <class 'float'>
+    # else:
+    #     # Błąd walidacji, np. użytkownik wpisał tekst
+    #     print(form.errors)
     def __init__(self):
 
         self.dateAddMoodStart :str
@@ -20,7 +30,13 @@ class mood():
         self.dateStart :str
         self.dateEnd :str
         self.errors = []
+        self.exception =[]
         self.moodsVariable = []
+        self.moodLevel :float
+        self.anxietyLevel   :float
+        self.voltageLevel :float
+        self.stimulationLevel :float
+        self.epizodesPsychotic :int
         # self.levelMood = [
         # 0 =>  ["from" => -20, "to" => -18],
         # 1 =>  ["from" => -18, "to" => -16],
@@ -45,11 +61,20 @@ class mood():
         # 20 =>  ["from" => 18, "to" => 20],
         
         # ];
-
+    def convertValue(self,request):
+        # forms.FloatField(min_value=0.0, max_value=100.0)
+        self.moodLevel = float(request.GET.get('moodLevel'))
+        self.anxietyLevel = float(request.GET.get('anxietyLevel'))
+        self.voltageLevel = float(request.GET.get('voltageLevel'))
+        self.stimulationLevel = float(request.GET.get('stimulationLevel'))
+        self.epizodesPsychotic = int(request.GET.get('epizodesPsychotic'))
 
     def selectLastMoods(self, request,):
         ModelsMood = modelsMood()
         result = ModelsMood.selectLastMoods(request);
+        if (result == None):
+            self.exception.append("dateError");
+            return 0;
         return (result);
 
 
@@ -177,28 +202,53 @@ class mood():
         
        
     
-    # def checkAddMood(self,request) {
-    #     if (( $mood["mood"] < -20 or $mood["mood"] > 20) or ( (string)(float) $mood["mood"] != $mood["mood"]  and ($mood["mood"] != "") ) ) {
-    #         self.errors.append("Nastroj musi mieścić się w zakresie od -20 do +20");
-    #     }
+    def checkAddMood(self,request):
+        # data = self.cleaned_data['price']
+        field = forms.FloatField(min_value=-20.00, max_value=20.00)
+        try:
+            mood_level = field.clean(request.GET.get('moodLevel'))
+        except forms.ValidationError:
+            self.errors.append("Nastroj musi mieścić się w zakresie od -20 do +20");
+        try:
+            mood_level = field.clean(request.GET.get('anxietyLevel'))
+        except forms.ValidationError:
+            self.errors.append("Lęk musi mieścić się w zakresie od -20 do +20");
+        try:
+            mood_level = field.clean(request.GET.get('voltageLevel'))
+        except forms.ValidationError:
+            self.errors.append("Napięcie musi mieścić się w zakresie od -20 do +20");
+        try:
+            mood_level = field.clean(request.GET.get('stimulationLevel'))
+        except forms.ValidationError:
+            self.errors.append("Pobudzenie musi mieścić się w zakresie od -20 do +20");
+        field = forms.IntegerField(required=False,min_value=0)
+        try:
+            mood_level = field.clean(request.GET.get('epizodesPsychotic'))
+        except forms.ValidationError:
+            self.errors.append("Liczba Epizodów psychotycznych musi być wieksza lub równa 0");
+        # if f.is_valid():
+        #     mood_value = f.cleaned_data['moodLevel']
+        # if ( self.moodLevel < -20 or self.moodLevel> 20):
+        #     self.errors.append("Nastroj musi mieścić się w zakresie od -20 do +20");
         
-    #     if ($mood["anxiety"] < -20 or $mood["anxiety"] > 20  or  ( (string)(float) $mood["anxiety"] != $mood["anxiety"]  and ($mood["anxiety"] != "") ) )   {
-    #         self.errors.append("Lęk musi mieścić się w zakresie od -20 do +20");
-    #     }
         
-    #     if ($mood["voltage"] < -20 or $mood["voltage"] > 20  or  ( (string)(float) $mood["voltage"] != $mood["voltage"] ) and ($mood["voltage"] != "") ) {
-    #         self.errors.append("Napięcie musi mieścić się w zakresie od -20 do +20");
-    #     }
+        # if (self.anxietyLevel  < -20 or self.anxietyLevel   > 20 ):
+        #     self.errors.append("Lęk musi mieścić się w zakresie od -20 do +20");
         
-    #     if (($mood["stimulation"] < -20 or $mood["stimulation"] > 20) or  ( (string)(float) $mood["stimulation"] !==$mood["stimulation"]  and ($mood["stimulation"] != "") ) ) {
-    #         self.errors.append("Pobudzenie musi mieścić się w zakresie od -20 do +20");
-    #     }
         
-    #     if (( $mood["epizodesPsychotic"] < 0)  or ( (string)(int) $mood["epizodesPsychotic"] != $mood["epizodesPsychotic"] ) and ($mood["epizodesPsychotic"] != "")) {
-    #         self.errors.append("Liczba Epizodów psychotycznych musi być wieksza lub równa 0");
-    #     }
+        # if (self.voltageLevel  < -20 or self.voltageLevel > 20):
+        #     self.errors.append("Napięcie musi mieścić się w zakresie od -20 do +20");
+        
+        
+        # if (self.stimulationLevel < -20 or self.stimulationLevel  > 20):
+        #     self.errors.append("Pobudzenie musi mieścić się w zakresie od -20 do +20");
+        
+        
+        # if ( self.epizodesPsychotic < 0):
+        #     self.errors.append("Liczba Epizodów psychotycznych musi być wieksza lub równa 0");
+        
 
-    # }
+    
 
     #     public function checkErrorAction(Request $request,int $minute) {
     #     if (empty($request->get("idActions")  )) {

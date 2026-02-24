@@ -26,8 +26,8 @@ class Moods(models.Model):
     level_anxiety = models.FloatField()
     level_nervousness = models.FloatField()
     level_stimulation = models.FloatField()
-    epizodes_psychotik = models.SmallIntegerField(blank=True)
-    what_work = models.TextField()
+    epizodes_psychotik = models.SmallIntegerField(blank=True, null=True)
+    what_work = models.TextField(blank=True)
     type = models.CharField(
         max_length=6,
         choices=enumMood.choices,

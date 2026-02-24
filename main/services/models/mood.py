@@ -31,10 +31,13 @@ class mood():
 
         Mood.level_stimulation = request.GET.get('stimulationLevel') 
 
+        if (not request.GET.get('epizodesPsychotic') ):
+            Mood.epizodes_psychotik = None
+        else:
+            Mood.epizodes_psychotik = request.GET.get('epizodesPsychotic')
+        
 
-        # Mood.epizodes_psychotik = request.GET.get('epizodesPsychotic')
-
-        Mood.what_work = ""
+        Mood.what_work = request.GET.get('whatWork')
         Mood.id_users_id =  user.id
         Mood.save();
         return Mood.id;

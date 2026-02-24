@@ -39,10 +39,13 @@ def addMoodSubmit(request):
             user = request.user 
             style = user.css;
             print (request.GET.get('timeStart'))
+            # return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': request.GET.get('timeStart') })
             # username = request.GET.get('timeStart')
-            if (request.GET.get('timeStart') == ""  ):
+            if (not request.GET.get('timeStart')  ):
                 timeStart = Mood.selectLastMoods(request)
-           
+                if (timeStart ==0):
+                     return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': ["Uzupełnij datę zaczęcia"] })
+                     
                 # if ( not timeStart.date_end):
                 #     return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': ["uzupełnij czas zaczęcia"] })
                 # else:
@@ -72,8 +75,9 @@ def addMoodSubmit(request):
             # return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': timeStart })
             
             # $Mood->setVariableMood($request);
+            # Mood.convertValue(request);
             Mood.checkError(timeStart,timeEnd,request);
-            # $Mood->checkAddMood($Mood->moodsVariable);
+            Mood.checkAddMood(request);
             
             # if (!empty($request->get("idActions")) ) {
             #     $Mood->checkErrorAction($request,round(((StrToTime($timeEnd) - StrToTime($timeStart)) /60 ),2) );
