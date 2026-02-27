@@ -19,7 +19,7 @@
                                         Dzień i godzina
                                     </td>
                                     <td >
-                                        <input type='date' name='dateStart' class='form-control' value='{ date("Y-m-d",StrToTime(date("Y-m-d")) + 3600 * 24)}}'>
+                                        <input type='date' name='dateStart' class='form-control' value='{{ tomorrow|date:"Y-m-d" }}'>
                                     </td>
                                 </tr>
                                 <tr>

@@ -20,7 +20,7 @@
                                         Godzina zaczęcia
                                     </td>
                                     <td class="main-mood-add-table-1">
-                                        <input type='date' name='dateStart' class='form-control' value=''>
+                                        <input type='date' name='dateStart' class='form-control' value='{% now "Y-m-d" %}'>
                                     </td>
                                 </tr>
                                 <tr>
@@ -33,7 +33,7 @@
                                         Godzina zakończenia
                                     </td>
                                     <td>
-                                        <input type='date' name='dateEnd' class='form-control' value=''>
+                                        <input type='date' name='dateEnd' class='form-control' value='{% now "Y-m-d" %}'>
                                     </td>
                                 </tr>
                                 <tr>

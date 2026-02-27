@@ -23,7 +23,7 @@ class mood():
 
 
         Mood.level_anxiety = request.GET.get('anxietyLevel')  
-        Mood.type = "mood"
+        #Mood.type = "mood"
 
 
         Mood.level_nervousness = request.GET.get('voltageLevel') 

@@ -61,13 +61,13 @@ class mood():
         # 20 =>  ["from" => 18, "to" => 20],
         
         # ];
-    def convertValue(self,request):
-        # forms.FloatField(min_value=0.0, max_value=100.0)
-        self.moodLevel = float(request.GET.get('moodLevel'))
-        self.anxietyLevel = float(request.GET.get('anxietyLevel'))
-        self.voltageLevel = float(request.GET.get('voltageLevel'))
-        self.stimulationLevel = float(request.GET.get('stimulationLevel'))
-        self.epizodesPsychotic = int(request.GET.get('epizodesPsychotic'))
+    # def convertValue(self,request):
+    #     # forms.FloatField(min_value=0.0, max_value=100.0)
+    #     self.moodLevel = float(request.GET.get('moodLevel'))
+    #     self.anxietyLevel = float(request.GET.get('anxietyLevel'))
+    #     self.voltageLevel = float(request.GET.get('voltageLevel'))
+    #     self.stimulationLevel = float(request.GET.get('stimulationLevel'))
+    #     self.epizodesPsychotic = int(request.GET.get('epizodesPsychotic'))
 
     def selectLastMoods(self, request,):
         ModelsMood = modelsMood()
