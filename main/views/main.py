@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from ..services.calendar import *
 from ..services.main import *
 from ..services.mood import *
+from ..services.sleep import *
 from django.template.defaulttags import register
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -97,3 +98,15 @@ def addMoodSubmit(request):
             #              Mood.saveMood(request)
             # } 
             return render(request,    style.replace("css","html") +  '/main/f.html')
+def addSleepSubmit(request):
+    user = request.user 
+    style = user.css;
+    Sleep =  sleep();
+    Sleep.checkError(request);
+    if (len(Sleep.errors) != 0):
+        return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': Sleep.errors })
+    else:
+        Sleep.addSleep(request);
+        return render(request,    style.replace("css","html") +  '/main/f.html')
+        
+    

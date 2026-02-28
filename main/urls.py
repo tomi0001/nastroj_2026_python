@@ -25,5 +25,6 @@ urlpatterns = [
     path("<int:year>/<int:month>/<int:day>/", main,name='main'),  # new
     path("<int:year>/<int:month>/", main,name='main'),  # new
     path("/addMoodSubmit", addMoodSubmit,name='addMoodSubmit'),  # new
+    path("/addSleepSubmit", addSleepSubmit,name='addSleepSubmit'),
 
 ]

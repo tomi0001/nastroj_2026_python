@@ -15,6 +15,7 @@ class mood():
         # return Moods.objects.raw(" SUBSTRING((date_end),1,16) as date_end where  date_start < '%s' and date_end > '%s'  and id_users = '%d' limit 1",(dateEnd),(dateStart),user.id)
     def saveMood(self, request, dateStart, dateEnd):
         user = request.user 
+        text = request.GET.get("whatWork")
         Mood = Moods()
         Mood.date_start = dateStart
         Mood.date_end = dateEnd
@@ -37,7 +38,25 @@ class mood():
             Mood.epizodes_psychotik = request.GET.get('epizodesPsychotic')
         
 
-        Mood.what_work = request.GET.get('whatWork')
+        Mood.what_work = text.replace("\n", "<br>")
         Mood.id_users_id =  user.id
         Mood.save();
         return Mood.id;
+
+    def addSleep(self, request):
+        user = request.user 
+        text = request.GET.get("whatSleep")
+        Sleep =  Moods();
+        Sleep.date_start = request.GET.get("dateStart") + " " + request.GET.get("timeStart") +  ":00";
+        Sleep.date_end = request.GET.get("dateEnd") + " " + request.GET.get("timeEnd") +  ":00";
+
+        if (  request.GET.get("howWorking") ):
+            Sleep.epizodes_psychotik = request.GET.get("howWorking");
+        
+        Sleep.what_work = text.replace("\n", "<br>")
+        Sleep.id_users_id = user.id
+        Sleep.type = "sleep";
+        Sleep.save();
+        return Sleep.id;
+
+    
