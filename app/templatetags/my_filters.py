@@ -1,4 +1,5 @@
 from django import template
+from  main.services.models.action  import *
 register = template.Library()
 
 class Counter:
@@ -24,3 +25,6 @@ def next(counter, step=1):
 @register.simple_tag
 def get_counter(counter):
     return counter.get()
+@register.simple_tag
+def selectAction(user_id:int):
+    return action.selectAction(user_id);

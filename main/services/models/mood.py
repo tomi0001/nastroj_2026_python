@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from ...models import Moods
 
 
+
 # Create your views here.
 class mood():    
     def selectLastMoods(self,request):

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from ..models import Moods
 from .models.mood import mood as modelsMood
+from .models.action import action as modelsAction
 from datetime import datetime
 import time
 from dateutil import parser
@@ -267,3 +268,9 @@ class mood():
             
     #     }
     # }
+
+
+
+    def selectAction(self,idUser):
+        Action = modelsAction()
+        return Action.selectAction(idUser);

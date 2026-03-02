@@ -18,9 +18,11 @@ def get_range(value):
 @login_required
 def main(request,year="",month="",day=""):
     Calendar = calendar(request,year,month,day)
+    Mood = mood()
     user = request.user 
     style = user.css;
     tomorrow = datetime.now() + timedelta(days=1)
+    listAction = Mood.selectAction(user.id)
     return render(request,    style.replace("css","html") +  '/main/main.html',{ 'text_month': Calendar.text_month ,
                                                 "year" :Calendar.year,
                                 "day2": 1,
@@ -34,7 +36,8 @@ def main(request,year="",month="",day=""):
                                 "back_year":  Calendar.back_year,
                                 "next_year": Calendar.next_year,
                                 "date": str(Calendar.year) + "-" + str(Calendar.month) + "-" +  str(Calendar.day), 
-                                "tomorrow": tomorrow
+                                "tomorrow": tomorrow,
+                                "listAction": listAction
                                 }
     )
 def addMoodSubmit(request):
@@ -42,7 +45,8 @@ def addMoodSubmit(request):
             Mood = mood()
             user = request.user 
             style = user.css;
-            print (request.GET.get('timeStart'))
+           
+
             # return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': request.GET.get('timeStart') })
             # username = request.GET.get('timeStart')
             if (not request.GET.get('timeStart')  ):

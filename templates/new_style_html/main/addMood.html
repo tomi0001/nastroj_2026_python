@@ -99,11 +99,11 @@
                                        </div>
                                         <div class='main-mood-add-scroll' >
                                             <div id="parentsAction">
+
+                                             {% for  list in   listAction %}
                                                 
-                                            
-                                                 @foreach (\App\Models\Action::selectAction(Auth::User()->id)  as $list)
                                                  <div class="rowPercent">
-                                                    <div class='main-mood-add-action main-mood-add-action-all'  id='divAction_{$list->id}}' onclick='selectedActionMain({$list->id}},{$loop->index}})'>{$list->name}}</div>
+                                                    <div class='main-mood-add-action main-mood-add-action-all'  id='divAction_{{list.id}}' onclick='selectedActionMain({{list.id}},{{forloop.counter }})'>{{list.name}}</div>
                                                     <div class="main-mood-add-action-hidden-percent main-mood-add-action-hidden" id='divActionPercent_{$list->id}}'>
                                                         <div style="display: inline-block; width: 40%; ">
                                                             <input type="number" class="percentExecuting form-control form-control-lg " title="procent wykonania" placeholder="procent wyk" name="percentExe[]"  min="1" max="100">
@@ -113,7 +113,7 @@
                                                         
                                                     </div>
                                                  </div>
-                                                 @endforeach
+                                                  {% endfor %}
                                             </div>
                                         </div>
                                     </td>
