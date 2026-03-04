@@ -25,9 +25,9 @@
                                     <td >
                                         <select name='nameProduct' class="form-control" id="select-state" onchange="loadTypePortion('{route('ajax.loadTypePortion')}}')">
                                             <option value="" class="form-control"></option>
-                                            @foreach (\App\Models\Product::selectProduct() as $listProduct)
-                                                <option value="{$listProduct->id}}" class="form-control">{$listProduct->name}}</option>
-                                            @endforeach
+                                            {% for  list in   listProduct %}
+                                                <option value="{{list.id}}" class="form-control">{{list.name}}</option>
+                                            {% endfor %}
                                         </select>
                                     </td>
                                 </tr>
@@ -38,9 +38,9 @@
                                     <td >
                                          <select name='namePlaned' class="form-control" id="select-state" onchange="valueDose(1)">
                                             <option value="" class="form-control"></option>
-                                            @foreach (\App\Models\Planned_drug::selectDose(Auth::User()->id) as $listDose)
-                                                <option value="{$listDose->id}}" class="form-control">{$listDose->name}}</option>
-                                            @endforeach
+                                            {% for  list in   listPlaned %}
+                                                <option value="{{list.id}}" class="form-control">{{list.name}}</option>
+                                            {% endfor %}
                                         </select>
                                     </td>
                                 </tr>
@@ -82,7 +82,7 @@
 
                                 <tr>
                                     <td colspan="2" class="main-mood-table-center">
-                                        <input type="button" id="buttonDrugsAdd" onclick="addDrugs('{ route('users.drugsAdd')}}')" class="btn btn-lg btn-success " value="Dodaj lek" >
+                                        <input type="button" id="buttonDrugsAdd" onclick="addDrugs('{% url 'addDrugsSubmit' %}')" class="btn btn-lg btn-success " value="Dodaj lek" >
                                     </td>
                                 </tr>    
                                 <tr>

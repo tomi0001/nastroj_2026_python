@@ -4,6 +4,7 @@ from ..services.calendar import *
 from ..services.main import *
 from ..services.mood import *
 from ..services.sleep import *
+from ..services.products import *
 from django.template.defaulttags import register
 from django.contrib.auth.models import User
 from datetime import datetime
@@ -19,10 +20,13 @@ def get_range(value):
 def main(request,year="",month="",day=""):
     Calendar = calendar(request,year,month,day)
     Mood = mood()
+    Product = products()
     user = request.user 
     style = user.css;
     tomorrow = datetime.now() + timedelta(days=1)
     listAction = Mood.selectAction(user.id)
+    listPlaned = Product.selectDose(user.id)
+    listProduct = Product.selectProduct(user.id)
     return render(request,    style.replace("css","html") +  '/main/main.html',{ 'text_month': Calendar.text_month ,
                                                 "year" :Calendar.year,
                                 "day2": 1,
@@ -37,7 +41,9 @@ def main(request,year="",month="",day=""):
                                 "next_year": Calendar.next_year,
                                 "date": str(Calendar.year) + "-" + str(Calendar.month) + "-" +  str(Calendar.day), 
                                 "tomorrow": tomorrow,
-                                "listAction": listAction
+                                "listAction": listAction,
+                                "listPlaned": listPlaned,
+                                "listProduct": listProduct
                                 }
     )
 def addMoodSubmit(request):
@@ -113,4 +119,30 @@ def addSleepSubmit(request):
         Sleep.addSleep(request);
         return render(request,    style.replace("css","html") +  '/main/f.html')
         
+def addDrugsSubmit(request):
+    user = request.user 
+    style = user.css;
+    Products =  products();
     
+    Products.setDate(request)
+    Products.checkError(request)
+
+    if (len(Products.errors) != 0):
+        return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': Products.errors })
+        
+    else:
+        # Sleep.addSleep(request);
+        # return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': request.GET.get("nameProduct")  })
+        return render(request,    style.replace("css","html") +  '/main/f.html')
+    # else:
+    #             if ($request->get("nameProduct") != "") {
+    #                 $price = $Drugs->sumPrice($request->get("dose"),$request->get("nameProduct"));
+    #                 $Drugs->addDrugs($request,$Drugs->date,$price);
+    #             }
+    #             else  {
+    #                 $Drugs->addPlanedDose($request,$Drugs->date);
+    #             }
+      
+                
+    #         }
+             
