@@ -133,16 +133,14 @@ def addDrugsSubmit(request):
     else:
         # Sleep.addSleep(request);
         # return render(request,    style.replace("css","html") +  '/main/ajax/error.html',{ 'error': request.GET.get("nameProduct")  })
-        return render(request,    style.replace("css","html") +  '/main/f.html')
-    # else:
-    #             if ($request->get("nameProduct") != "") {
-    #                 $price = $Drugs->sumPrice($request->get("dose"),$request->get("nameProduct"));
-    #                 $Drugs->addDrugs($request,$Drugs->date,$price);
-    #             }
-    #             else  {
-    #                 $Drugs->addPlanedDose($request,$Drugs->date);
-    #             }
+
+
+        if (request.GET.get("nameProduct")):
+            price = Products.sumPrice(request.GET.get("dose"),request.GET.get("nameProduct"));
+            Products.addDrugs(request,Products.date,price);
+    
+        else:
+            Products.addPlanedDose(request,Products.date);
       
-                
-    #         }
-             
+        return render(request,    style.replace("css","html") +  '/main/f.html')                
+            

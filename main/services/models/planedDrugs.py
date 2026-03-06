@@ -9,3 +9,19 @@ class plannedDrugs():
     def selectDose(self,idUsers :int):
         return Planned_drugs.objects.filter(id_users_id = idUsers).distinct("name").order_by("name");
     
+    def showPlanedOne(self,request,name :str):
+        user = request.user
+        return Planned_drugs.objects.filter(id_users_id = user.id).filter(name = name).first();
+    
+    def showPlanedOneSettings(self,request, name :str):
+        user = request.user
+        return Planned_drugs.objects.filter(id_users_id = user.id).filter(name = name);
+    
+    def showName(self,request, id :int):
+        user = request.user
+        return Planned_drugs.objects.filter(id_users_id =  user.id).filter(id = id).first();
+
+    def selectPlaned(self,request,  namePlaned):
+        user = request.user
+        return  Planned_drugs.objects.filter(id_users_id = user.id).filter(name  = namePlaned).all();
+                                                                           

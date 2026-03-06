@@ -332,3 +332,7 @@ SHORT_MOOD = 500
 LONG_SLEEP = 72000
 
 SHORT_SLEEP = 500
+REST_FRAMEWORK = {
+    'coerce_to_string': False,
+
+}

@@ -8,3 +8,7 @@ class products():
     def selectProduct(self,idUsers :int):
         return Products.objects.filter(id_users_id = idUsers).order_by("name");
     
+
+
+    def selectProductId(self,idProduct :int):
+        return Products.objects.filter(id = idProduct).first()
